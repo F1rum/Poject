@@ -1,0 +1,154 @@
+.modalWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    max-height: 500px;
+    transform: translate(-50%, -50%) scale(0.9);
+    transform-origin: center;
+    opacity: 0;
+    display: none;
+    flex-direction: column;
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    gap: 20px;
+    transition: all 0.3s ease;
+    z-index: 5000;
+}
+
+.modalWindow.active {
+    display: flex;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.loginRegisterBorder {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #252525;
+    border-bottom: 1px solid #333;
+    padding: 0 10px;
+    position: relative;
+}
+
+.modalWindow button {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #aaa;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.modalWindow button:hover,
+.modalWindow button.active {
+    color: #4CAF50;
+    transform: scale(1.1);
+}
+
+.modalBorderButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background: #4CAF50;
+    transition: transform 0.3s ease;
+}
+
+.modalString {
+    position: relative;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalString input {
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #252525;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.modalString input:focus {
+    border-color: #4CAF50;
+}
+
+.modalString label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.modalString input:focus + label,
+.modalString input:not(:placeholder-shown) + label {
+    top: 0;
+    left: 15px;
+    font-size: 12px;
+    color: #4CAF50;
+}
+
+#loginButton, #registerButton {
+    padding: 12px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#loginButton:hover, #registerButton:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#loginButton:active, #registerButton:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.modalWindowLogin,
+.modalWindowRegister {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modalWindowLogin.active,
+.modalWindowRegister.active {
+    display: flex;
+}
+
+.overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 0.7;
+    visibility: visible;
+}

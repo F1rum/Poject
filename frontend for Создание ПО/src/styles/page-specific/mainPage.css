@@ -1,0 +1,447 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    animation: background-color123 1s 3s forwards;
+}
+@keyframes background-color123 {
+    from {
+        background-color: #f5f5f5;
+        overflow: hidden;
+    }
+    to {
+        background-color: #333;
+        overflow: auto;
+    }
+}
+    
+.headerAI {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 64px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: headerAIbackground 0.5s 3s forwards, headerSlideTop 0.8s 4s forwards, headerAIbackgroundcolor 1s 5s forwards;
+    width: 100%;
+    padding: 5px;
+}
+    
+@keyframes headerAIbackgroundcolor {
+    from {
+        background-color: #333;
+    }
+    to {
+        background-color: #252525;
+    }
+}
+    
+header {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    white-space: nowrap;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    
+    
+.ai {
+    opacity: 0;
+    transform: translateX(1.7em);
+    animation: fadeIn 1s forwards, slideLeft 1s 1.5s forwards;
+    cursor: default;
+}
+    
+.website {
+    opacity: 0;
+    animation: fadeIn 1s 2s forwards;
+    cursor: default;
+}
+    
+.aiWebsiteHeader p {
+    font-size: 18px;
+    opacity: 0;
+    text-align: center;
+    animation: fadeInContent 1s 5s forwards;
+}
+    
+    
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+    
+    
+@keyframes slideLeft {
+    from {
+        transform: translateX(1.7em);
+    }
+    to {
+        transform: translateX(-0.4em);
+    }
+}
+    
+@keyframes headerSlideTop {
+    0% {
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 64px;
+    }
+    100% {
+        top: 0;
+        transform: translate(-50%, 0);
+        font-size: 24px;
+        padding: 0;
+    }
+}
+    @keyframes headerAIbackground {
+    from {
+    color: black;
+    }
+    to {
+    color: white;
+    }
+}
+    
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.aiWebsiteHeader{
+    padding-bottom: 50px;
+    width: 100%;
+    z-index: 5000;
+}
+    
+
+
+
+.icon-button {
+    display: flex;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s 5.5s forwards;
+}
+
+.icon-button i {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.icon-button:hover i {
+    color: #4CAF50;
+}
+
+.icon-button:active i {
+    transform: scale(0.9);
+}
+
+
+
+.hamburger-menu {
+    opacity: 0;
+    animation: fadeIn 1s 5.5s forwards;
+    width: 30px;
+    height: 24px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+.hamburger-menu span {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 10000;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: -200%;
+    width: 100%;
+    height: 100%;
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    transition: left 0.3s ease;
+    z-index: 1;
+}
+
+.menu.active {
+    left: 0;
+}
+
+.menu div {
+    flex: 1;
+    justify-content: space-between;
+    padding-left: 60px;
+}
+
+.menu button {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu button:hover {
+    color: #4CAF50;
+    transform: scale(1.1);
+}
+
+
+
+
+
+.mainContainder {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 1s ease 1s forwards;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1.5s ease 6.5s forwards;
+}
+
+.mainContainder h1 {
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color:white;
+}
+
+.informationMenu {
+    top: 0;
+    left: 0;
+    width: 1000px;
+    height: 100%;
+    background-color: #252525;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    border-radius: 15px;
+    animation: fadeIn 0.5s ease 1s forwards;
+}
+
+.informationToggleMenu {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 1000px;
+    background-color: #252525;
+    border-bottom: 1px solid #333;
+    position: relative;
+    border-radius: 15px;
+}
+
+.informationToggleMenu button {
+    flex: 1;
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+    transition:color 0.3s ease;
+}
+
+.informationToggleMenu button:hover,
+.informationToggleMenu button.active {
+    color: #4CAF50;
+}
+
+.informationTextTG,
+.informationTextWebsite {
+    display: none; /* Скрываем тексты по умолчанию */
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.informationTextTG.active,
+.informationTextWebsite.active {
+    display: block; /* Показываем только активный текст */
+}
+
+.informationBorder {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background: #4CAF50;
+    transition: transform 0.3s ease;
+}
+
+.informationTextTG p,
+.informationTextWebsite p{
+    font-size: 20px;
+    text-align: center;
+}
+
+.informationTextTG a,
+.informationTextWebsite a {
+    display: inline-block;
+    padding: 10px 30px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: inherit;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.informationTextTG a:hover,
+.informationTextWebsite a:hover {
+    color: white;
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    transform: scale(1.05);
+}
+
+.informationTextTG a:active
+.informationTextWebsite a:active {
+    transform: scale(1);
+    background-color: #45a049;
+    border-color: #45a049;
+}
+
+
+
+
+
+.textAboutProject { /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+    border-bottom: 1px solid black;
+    opacity: 0;
+    animation: fadeIn 1.5s ease 7.2s forwards;
+}
+
+.textAboutProject h2{
+    display: flex;
+    color:white;
+    width: 100%;
+    font-size: 36px;
+    margin-bottom: 10px;
+    padding: 100px 0 15px;
+    border-bottom: 1px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+.projectInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 20px;
+}
+
+.projectInfo p {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    padding: 20px 40px;
+    line-height: 1.8;
+    text-align: justify;
+    text-indent: 30px;
+    max-width: 900px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.projectInfo button {
+    padding: 10px 60px;
+    max-width: 900px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.projectInfo button:hover {
+    background-color: #45a049;
+    color: white;
+}

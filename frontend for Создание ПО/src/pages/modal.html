@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Toggle Animation Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .modalWindow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            max-height: 500px;
+            transform: translate(-50%, -50%) scale(0.9);
+            transform-origin: center;
+            opacity: 0;
+            display: none;
+            flex-direction: column;
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            gap: 20px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modalWindow.active {
+            display: flex;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .loginRegisterBorder {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            background-color: #252525;
+            border-bottom: 1px solid #333;
+            padding: 0 10px;
+            position: relative;
+        }
+
+        .modalWindow button {
+            flex: 1;
+            padding: 10px 0;
+            border: none;
+            background: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #aaa;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .modalWindow button:hover,
+        .modalWindow button.active {
+            color: #4CAF50;
+            transform: scale(1.1);
+        }
+
+        .modalBorderButton {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: #4CAF50;
+            transition: transform 0.3s ease;
+        }
+
+        .modalString {
+            position: relative;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modalString input {
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #252525;
+            color: #ffffff;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .modalString input:focus {
+            border-color: #4CAF50;
+        }
+
+        .modalString label {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #aaa;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .modalString input:focus + label,
+        .modalString input:not(:placeholder-shown) + label {
+            top: 0;
+            left: 15px;
+            font-size: 12px;
+            color: #4CAF50;
+        }
+
+        #loginButton, #registerButton {
+            padding: 12px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: #ffffff;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #loginButton:hover, #registerButton:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #loginButton:active, #registerButton:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .modalWindowLogin,
+        .modalWindowRegister {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .modalWindowLogin.active,
+        .modalWindowRegister.active {
+            display: flex;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .icon-button {
+            background-color: transparent; /* Прозрачный фон */
+            border: none; /* Убираем рамку */
+            border-radius: 50%; /* Скругляем кнопку, если нужно */
+            width: 50px; /* Размер кнопки */
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer; /* Указатель при наведении */
+            transition: transform 0.3s ease, color 0.3s ease; /* Анимация */
+        }
+
+        .icon-button i {
+            font-size: 24px; /* Размер значка */
+            color: rgba(255, 255, 255, 0.8); /* Полупрозрачный силуэт */
+            transition: color 0.3s ease; /* Плавное изменение цвета */
+        }
+
+        .icon-button:hover i {
+            color: #4CAF50; /* Изменение цвета при наведении */
+        }
+
+        .icon-button:active i {
+            transform: scale(0.9); /* Уменьшение значка при нажатии */
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <button class="icon-button">
+        <i class="fas fa-user"></i>
+    </button>    
+    <button id="openModal">Открыть окно</button>
+    <div class="overlay" id="overlay"></div>
+    <div class="modalWindow" id="modalWindow">
+        <div class="loginRegisterBorder">
+            <button id="loginTab" class="active">Вход</button>
+            <button id="registerTab">Регистрация</button>
+            <div class="modalBorderButton"></div>
+        </div>
+        <div class="modalWindowLogin active">
+            <div class="modalString">
+                <input type="email" id="emailLogin" placeholder=" " required>
+                <label for="emailLogin">Введите Email</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="passwordLogin" placeholder=" " required>
+                <label for="passwordLogin">Введите пароль</label>
+            </div>
+            <button id="loginButton">Войти</button>
+        </div>
+        <div class="modalWindowRegister">
+            <div class="modalString">
+                <input type="email" id="emailRegister" placeholder=" " required>
+                <label for="emailRegister">Введите Email</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="passwordRegister" placeholder=" " required>
+                <label for="passwordRegister">Введите пароль</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="repeatPasswordRegister" placeholder=" " required>
+                <label for="repeatPasswordRegister">Повторите пароль</label>
+            </div>
+            <button id="registerButton">Зарегистрироваться</button>
+        </div>
+    </div>
+    <script>
+        const openModalButton = document.querySelector('#openModal');
+        const overlay = document.querySelector('#overlay');
+        const modalWindow = document.querySelector('#modalWindow');
+        const loginButton = document.querySelector('#loginButton');
+        const registerbutton = document.querySelector('#registerButton');
+        const modalBorderButton = document.querySelector('.modalBorderButton');
+        const loginWindow = document.querySelector('.modalWindowLogin');
+        const registerWindow = document.querySelector('.modalWindowRegister');
+        const repeatPassword = document.querySelector('#repeatPasswordRegister');
+        const passwordRegister = document.querySelector('#passwordRegister');
+
+        const closeModal = () => {
+            overlay.classList.remove('active');
+            modalWindow.classList.remove('active');
+        };
+
+        openModalButton.addEventListener('click', () => {
+            overlay.classList.add('active');
+            modalWindow.classList.add('active');
+        });
+
+        overlay.addEventListener('click', closeModal);
+
+        loginTab.addEventListener("click", () => {
+            modalBorderButton.style.transform = 'translateX(0)';
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginWindow.classList.add('active');
+            registerWindow.classList.remove('active');
+        });
+
+        registerTab.addEventListener("click", () => {
+            modalBorderButton.style.transform = 'translateX(100%)';
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerWindow.classList.add('active');
+            loginWindow.classList.remove('active');
+        });
+
+
+    </script>
+</body>
+</html>

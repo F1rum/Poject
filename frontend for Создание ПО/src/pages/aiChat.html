@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/page-specific/aiChatPage.css">
+    <link rel="stylesheet" href="../styles/page-specific/mainModal.css">
+</head>
+<body>
+    <div class="headerAI">
+        <header>
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div>
+                <a href="index.html.html" style=" text-decoration: none; cursor: default;"><span class="ai">AI</span><span class="website"> Website</span></a>
+            </div>
+            <button class="icon-button" id="openModal">
+                <i class="fas fa-user"></i>
+            </button>
+        </header>
+    </div>
+    <div class="menu" id="menu">
+        <div>
+            <button>Придумайте</button>
+            <button>Сюда</button>
+            <button>Что</button>
+            <button>Нибудь</button>
+        </div>
+    </div>
+    <div class="dialogAndHistory">
+        <div class="historyDialog">
+            <h2>История переписки</h2>
+            <div class="historyContainer">
+                <!--сюда должны сохраняться диалоги для пользователя-->
+                <div class="history-test">Пример для теста</div>
+                <div class="history-test">Пример для теста</div>
+            </div>
+        </div>
+        <div class="chatWindow">
+            <div>
+                <input type="text" id="chat" placehoder="Напишите какой нибудь вопрос...">
+                <button class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+                <div class="messegeUser">
+
+                </div>
+                <div class="messegeAI">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="overlay" id="overlay"></div>
+    <div class="modalWindow" id="modalWindow">
+        <div class="loginRegisterBorder">
+            <button id="loginTab" class="active">Вход</button>
+            <button id="registerTab">Регистрация</button>
+            <div class="modalBorderButton"></div>
+        </div>
+        <div class="modalWindowLogin active">
+            <div class="modalString">
+                <input type="email" id="emailLogin" placeholder=" " required>
+                <label for="emailLogin">Введите Email</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="passwordLogin" placeholder=" " required>
+                <label for="passwordLogin">Введите пароль</label>
+            </div>
+            <button id="loginButton">Войти</button>
+        </div>
+        <div class="modalWindowRegister">
+            <div class="modalString">
+                <input type="email" id="emailRegister" placeholder=" " required>
+                <label for="emailRegister">Введите Email</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="passwordRegister" placeholder=" " required>
+                <label for="passwordRegister">Введите пароль</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="repeatPasswordRegister" placeholder=" " required>
+                <label for="repeatPasswordRegister">Повторите пароль</label>
+            </div>
+            <button id="registerButton">Зарегистрироваться</button>
+        </div>
+    </div>
+    <script src="../script/aiChat.js" defer></script>
+    <script src="../script/modal.js" defer></script>
+</body>
+</html>

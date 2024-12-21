@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/page-specific/mainPage.css">
+    <link rel="stylesheet" href="../styles/page-specific/mainModal.css">
+
+    <title>AI Website</title>
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+    <!--до меня очень поздно дошло сделать весь header прилипаюшим и красиво уменьшаюшимся при пролистывании страницы-->
+    <div class="aiWebsiteHeader">
+        <div class="headerAI">
+            <header>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- Меню -->
+                <div class="menu" id="menu">
+                <div>
+                    <button>Придумайте</button>
+                    <button>Сюда</button>
+                    <button>Что</button>
+                    <button>Нибудь</button>
+                </div>
+            </div>
+            <div>
+                <span class="ai">AI</span><span class="website"> Website</span>
+            </div>
+                <button class="icon-button" id="openModal">
+                <i class="fas fa-user"></i>
+                </button>
+            </header>
+        </div>
+    </div>
+        
+
+    <div class="mainContainder">
+        <h1>Основные источники</h1>
+        <div class="informationMenu">
+            <div class="informationToggleMenu">
+                <button id="informationButtonTG">Наш телеграмм бот</button>
+                <button id="informationButtonWebsite">Наш вебсайт бот</button>
+                <div class="informationBorder"></div>
+            </div>
+            <div class="informationTextTG">
+                <p>Наш Телеграм-бот поможет вам быстро оценить свой код и получить рекомендации по улучшению.  
+                    Просто добавьте бота, отправьте ему текст вашего кода и укажите язык программирования.  
+                    Бот автоматически проанализирует ваш уровень знаний и выявит слабые места.  
+                    Вы получите понятные советы и шаги, чтобы улучшить свои навыки.  
+                    Нажмите на кнопку ниже, чтобы начать использовать бота прямо сейчас.</p>
+                <a href="#">Перейти в Телеграм-бот</a>
+            </div>
+            <div class="informationTextWebsite">
+                <p>Наш веб-чат — это инструмент для общения с искусственным интеллектом и анализа вашего кода.  
+                    Введите свой код или загрузите файл, чтобы получить подробную обратную связь.  
+                    Чат покажет ошибки, предложит улучшения и подскажет, как их исправить.  
+                    Искусственный интеллект даст рекомендации, как развиваться в программировании.  
+                    Нажмите на кнопку ниже, чтобы открыть веб-чат и начать прямо сейчас.</p>
+                <a href="aiChat.html">Перейти в чат с ИИ</a>
+            </div> 
+        </div>
+    </div>
+    <div class="textAboutProject">
+        <h2>О нашем проекте</h2>
+        <div class="projectInfo">
+            <p>Наш проект — это амбициозное стремление объединить технологии и творчество, чтобы создать инструмент, способный помогать каждому человеку раскрыть свой потенциал. Мы стремимся к тому, чтобы современные решения в области искусственного интеллекта стали доступными, удобными и полезными для широкой аудитории.
+
+                Основная идея проекта заключается в том, чтобы предоставить пользователям уникальный способ взаимодействия с их задачами в программировании. Мы создали инструмент, который может анализировать ваш код, предоставлять советы по его улучшению, а также помогать вам осваивать новые подходы и технологии. Наша цель — не просто создать алгоритм, а обеспечить поддержку и наставничество в мире программирования.
+                
+                Мы верим, что искусственный интеллект может стать не только вспомогательным инструментом, но и надёжным партнёром для программистов разного уровня. Благодаря нашему проекту, пользователи смогут оптимизировать свои рабочие процессы, учиться эффективнее и развиваться в своём темпе.
+                
+                Наша команда объединяет специалистов с различным опытом, которые увлечены созданием решений, способных приносить реальную пользу. Мы стремимся не только к техническому совершенству, но и к тому, чтобы наши инструменты были понятными и удобными для всех.
+                
+                Наша миссия — создать пространство, где технологии помогут пользователям расти, учиться и реализовывать свои идеи. Мы уверены, что такие инструменты, как наш, играют ключевую роль в формировании будущего, где технологии служат человеку.
+                
+                Мы благодарим вас за интерес к нашему проекту и приглашаем вас воспользоваться всеми его преимуществами, чтобы вместе двигаться к новым достижениям!</p>
+            <button id="projectInfoButton">Примеры работы</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="modalWindow" id="modalWindow">
+        <div class="loginRegisterBorder">
+            <button id="loginTab" class="active">Вход</button>
+            <button id="registerTab">Регистрация</button>
+            <div class="modalBorderButton"></div>
+        </div>
+        <div class="modalWindowLogin active">
+            <div class="modalString">
+                <input type="email" id="emailLogin" placeholder=" " required>
+                <label for="emailLogin">Введите Email</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="passwordLogin" placeholder=" " required>
+                <label for="passwordLogin">Введите пароль</label>
+            </div>
+            <button id="loginButton">Войти</button>
+        </div>
+        <div class="modalWindowRegister">
+            <div class="modalString">
+                <input type="email" id="emailRegister" placeholder=" " required>
+                <label for="emailRegister">Введите Email</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="passwordRegister" placeholder=" " required>
+                <label for="passwordRegister">Введите пароль</label>
+            </div>
+            <div class="modalString">
+                <input type="password" id="repeatPasswordRegister" placeholder=" " required>
+                <label for="repeatPasswordRegister">Повторите пароль</label>
+            </div>
+            <button id="registerButton">Зарегистрироваться</button>
+        </div>
+    </div>
+<script>
+</script>
+<script src="../script/script.js" defer></script>
+<script src="../script/modal.js" defer></script>
+</body>
+</html>
